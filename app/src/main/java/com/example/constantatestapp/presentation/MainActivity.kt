@@ -1,8 +1,9 @@
-package com.example.constantatestapp
+package com.example.constantatestapp.presentation
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import com.example.constantatestapp.R
 import com.example.constantatestapp.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {

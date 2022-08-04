@@ -1,8 +1,11 @@
-package com.example.constantatestapp
+package com.example.constantatestapp.presentation
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.constantatestapp.data.FilmListRepositoryImpl
+import com.example.constantatestapp.domain.GetFilmListUseCase
+import com.example.constantatestapp.domain.Item
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
@@ -10,17 +13,16 @@ import kotlinx.coroutines.launch
 class FilmsViewModel : ViewModel() {
 
     val itemsFilms = MutableLiveData<List<Item>>()
-    private val api = RetrofitFactory.new()
-    val repositry = Repository()
+    private val repository = FilmListRepositoryImpl
+    private val getFilmListUseCase = GetFilmListUseCase(repository)
+
     private var job: Job? = null
 
     fun request() {
         job?.cancel()
         job = viewModelScope.launch(Dispatchers.IO) {
-            val films = repositry.getFilms()
+            val films = getFilmListUseCase.getFilmList()
             itemsFilms.postValue(films)
         }
-
     }
-
 }

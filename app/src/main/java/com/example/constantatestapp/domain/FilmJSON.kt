@@ -1,4 +1,4 @@
-package com.example.constantatestapp
+package com.example.constantatestapp.domain
 
 import com.google.gson.annotations.SerializedName
 

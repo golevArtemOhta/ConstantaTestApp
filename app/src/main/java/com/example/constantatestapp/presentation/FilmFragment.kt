@@ -1,16 +1,17 @@
-package com.example.constantatestapp
+package com.example.constantatestapp.presentation
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.constantatestapp.databinding.FragmentFilmBinding
+import com.example.constantatestapp.domain.Item
 
 
 class FilmFragment : Fragment() {
@@ -19,10 +20,8 @@ class FilmFragment : Fragment() {
     lateinit var filmsItems: List<Item>
     private val adapter = FilmAdapter()
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
     }
 
     override fun onCreateView(
@@ -44,11 +43,9 @@ class FilmFragment : Fragment() {
         super.onStart()
         filmsViewModel.itemsFilms.observe(activity as LifecycleOwner, Observer {
             filmsItems = it
-            adapter.getFilmsData(filmsItems)
+            adapter.setSortedFilmsList(filmsItems)
             adapter.notifyDataSetChanged()
         })
-
-
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
