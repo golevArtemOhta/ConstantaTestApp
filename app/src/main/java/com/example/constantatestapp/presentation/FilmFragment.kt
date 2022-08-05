@@ -11,7 +11,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.constantatestapp.databinding.FragmentFilmBinding
-import com.example.constantatestapp.domain.Item
+import com.example.constantatestapp.data.Item
 
 
 class FilmFragment : Fragment() {
@@ -33,23 +33,16 @@ class FilmFragment : Fragment() {
         return binding.root
     }
 
-    @SuppressLint("SetTextI18n")
+    @SuppressLint("SetTextI18n", "NotifyDataSetChanged")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         filmsViewModel.request()
-    }
 
-    @SuppressLint("NotifyDataSetChanged")
-    override fun onStart() {
-        super.onStart()
         filmsViewModel.itemsFilms.observe(activity as LifecycleOwner, Observer {
             filmsItems = it
             adapter.setSortedFilmsList(filmsItems)
             adapter.notifyDataSetChanged()
         })
-    }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
         binding.rvFilms.layoutManager = LinearLayoutManager(context)
         binding.rvFilms.adapter = adapter
     }

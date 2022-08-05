@@ -5,7 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.constantatestapp.data.FilmListRepositoryImpl
 import com.example.constantatestapp.domain.GetFilmListUseCase
-import com.example.constantatestapp.domain.Item
+import com.example.constantatestapp.data.Item
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch

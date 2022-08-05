@@ -1,4 +1,4 @@
-package com.example.constantatestapp.domain
+package com.example.constantatestapp.data
 
 data class Actor(
     val actorName: String

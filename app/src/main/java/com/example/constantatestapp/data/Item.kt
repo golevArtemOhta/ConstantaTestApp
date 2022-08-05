@@ -1,4 +1,6 @@
-package com.example.constantatestapp.domain
+package com.example.constantatestapp.data
+
+import com.example.constantatestapp.data.Actor
 
 data class Item(
     val actors: List<Actor>,

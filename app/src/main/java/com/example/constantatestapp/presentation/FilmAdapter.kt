@@ -8,7 +8,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.RecyclerView
 import com.example.constantatestapp.R
 import com.example.constantatestapp.databinding.FilmItemBinding
-import com.example.constantatestapp.domain.Item
+import com.example.constantatestapp.data.Item
 
 class FilmAdapter : RecyclerView.Adapter<FilmAdapter.FilmsHolder>() {
     val filmsList = ArrayList<Item>()
@@ -52,6 +52,7 @@ class FilmAdapter : RecyclerView.Adapter<FilmAdapter.FilmsHolder>() {
     }
 
     fun setSortedFilmsList(films: List<Item>) {
+        filmsList.clear()
         filmsList.addAll(films)
         filmsList.sortBy { it.releaseYear }
     }

@@ -1,8 +1,8 @@
-package com.example.constantatestapp.domain
+package com.example.constantatestapp.data
 
 import com.google.gson.annotations.SerializedName
 
-data class FilmJSON(
+data class FilmDto(
     @SerializedName("items")
     val items: List<Item>
 )
